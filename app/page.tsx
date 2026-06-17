@@ -48,7 +48,7 @@ const navLinks = [
   { label: "Sobre", href: "#sobre" },
 ];
 
-const WA_NUMBER = "5511999999999";
+const WA_NUMBER = "5511994316205";
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Olá%20Junior!%20Quero%20saber%20mais%20sobre%20as%20caricaturas`;
 
 export default function Home() {
