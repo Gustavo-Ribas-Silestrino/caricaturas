@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 const slides = [
@@ -22,6 +22,7 @@ export default function Carousel() {
   const [current, setCurrent] = useState(0);
   const [fading, setFading] = useState(false);
   const [next, setNext] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   function goTo(idx: number) {
     if (fading) return;
@@ -60,6 +61,14 @@ export default function Carousel() {
         <div
           className="flex gap-4 w-full max-w-3xl items-center transition-opacity duration-100"
           style={{ opacity: fading ? 0 : 1 }}
+          onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+          onTouchEnd={(e) => {
+            if (touchStartX.current === null) return;
+            const diff = touchStartX.current - e.changedTouches[0].clientX;
+            if (diff > 50) nextSlide();
+            else if (diff < -50) prev();
+            touchStartX.current = null;
+          }}
         >
           {indices.map((idx, pos) => {
             const isCenter = pos === 1;
