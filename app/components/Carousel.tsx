@@ -79,7 +79,7 @@ export default function Carousel() {
                 className={[
                   "relative rounded-2xl overflow-hidden flex-shrink-0 cursor-pointer",
                   isCenter
-                    ? "w-1/2 aspect-[4/5] shadow-2xl"
+                    ? "w-full sm:w-1/2 aspect-[4/5] shadow-2xl"
                     : "w-1/4 aspect-[4/5] opacity-40 hidden sm:block",
                 ].join(" ")}
               >
