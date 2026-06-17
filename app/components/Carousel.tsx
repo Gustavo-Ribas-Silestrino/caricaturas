@@ -87,6 +87,7 @@ export default function Carousel() {
                   src={slides[idx].src}
                   alt={slides[idx].alt}
                   fill
+                  sizes={isCenter ? "(max-width: 768px) 80vw, 40vw" : "20vw"}
                   className="object-cover"
                   draggable={false}
                 />

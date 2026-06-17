@@ -131,6 +131,7 @@ export default function Home() {
                     src="/fotos/kaka.png"
                     alt="Caricatura do Kaká"
                     fill
+                    sizes="(max-width: 768px) 224px, 384px"
                     className="object-cover object-top"
                     priority
                   />
@@ -188,6 +189,7 @@ export default function Home() {
                       src={p.img}
                       alt={p.name}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     {p.showTitle && (
@@ -232,6 +234,7 @@ export default function Home() {
                   src="/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg"
                   alt="Junior trabalhando"
                   fill
+                  sizes="(max-width: 768px) 45vw, 25vw"
                   className="object-cover"
                 />
               </div>
@@ -240,6 +243,7 @@ export default function Home() {
                   src="/fotos/WhatsApp Image 2026-03-02 at 10.41.28 (1).jpeg"
                   alt="Caricatura ao vivo"
                   fill
+                  sizes="(max-width: 768px) 45vw, 25vw"
                   className="object-cover"
                 />
               </div>
