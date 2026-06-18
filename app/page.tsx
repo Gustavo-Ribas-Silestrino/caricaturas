@@ -147,7 +147,7 @@ export default function Home() {
             tag="Arte moderna"
             title="Caricatura Digital"
             desc="Arte digital colorida, impressa em papel A4 de alta qualidade. Estilo vibrante e moderno, perfeita para brindes corporativos e presentes especiais."
-            img="/fotos/DIGITAL.png"
+            img="/fotos/DIGITAL_crop.png"
             alt="Caricatura digital"
             cta="Solicitar orçamento"
             reverse
