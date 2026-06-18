@@ -202,7 +202,7 @@ export default function Home() {
             <div className="text-center md:text-left">
               <p className="text-[#F5A623] font-semibold text-xs md:text-sm uppercase tracking-widest mb-3">Sobre mim</p>
               <h2 className="font-black text-3xl md:text-4xl text-white mb-4 md:mb-6">
-                Quem é o <span className="text-[#F5A623]">Junior Favero</span>?
+                Quem é o <span className="text-[#F5A623]">Ivo Favero</span>?
               </h2>
               <p className="text-white/70 text-sm md:text-base leading-relaxed mb-4">
                 Caricaturista e ilustrador desde 2000 atuando no mercado de caricaturas em eventos e ilustrações em studio.
@@ -270,7 +270,7 @@ export default function Home() {
             Junior <span className="text-[#F5A623]">Caricaturas</span>
           </span>
           <p className="text-white/40 text-xs md:text-sm text-center">
-            © 2025 Junior Caricaturas & Brindes. Todos os direitos reservados.
+            © 2025 Ivo Caricaturas & Brindes. Todos os direitos reservados.
           </p>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-[#F5A623] hover:text-[#F7C262] text-sm font-medium transition-colors">
             WhatsApp

@@ -10,7 +10,7 @@ export default function ContactForm() {
         const form = e.currentTarget;
         const nome = (form.elements.namedItem("nome") as HTMLInputElement).value;
         const msg = (form.elements.namedItem("mensagem") as HTMLTextAreaElement).value;
-        const text = encodeURIComponent(`Olá Junior! Me chamo ${nome}. ${msg}`);
+        const text = encodeURIComponent(`Olá Ivo! Me chamo ${nome}. ${msg}`);
         window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, "_blank");
       }}
       className="bg-white rounded-2xl shadow-sm border border-[#1B2A4A]/10 p-6 flex flex-col gap-4"
