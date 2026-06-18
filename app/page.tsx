@@ -3,7 +3,7 @@ import VideoCarousel from "./components/VideoCarousel";
 import ContactForm from "./components/ContactForm";
 
 const WA_NUMBER = "5511994316205";
-const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Olá%20Junior!%20Quero%20saber%20mais%20sobre%20as%20caricaturas`;
+const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Olá%20Ivo!%20Quero%20saber%20mais%20sobre%20as%20caricaturas`;
 
 const navLinks = [
   { label: "Reações", href: "#reacoes" },
@@ -62,7 +62,7 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#1B2A4A]/95 backdrop-blur-sm shadow-lg">
         <nav className="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between gap-2">
           <span className="font-bold text-base md:text-xl text-white tracking-wide shrink-0">
-            Junior <span className="text-[#F5A623]">Caricaturas</span>
+            Ivo <span className="text-[#F5A623]">Caricaturas</span>
           </span>
           <ul className="hidden md:flex gap-6">
             {navLinks.map((l) => (
@@ -172,7 +172,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                <Image src="/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg" alt="Junior trabalhando" fill sizes="(max-width: 768px) 45vw, 25vw" className="object-cover" loading="lazy" />
+                <Image src="/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg" alt="Ivo trabalhando" fill sizes="(max-width: 768px) 45vw, 25vw" className="object-cover" loading="lazy" />
               </div>
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mt-6 md:mt-8">
                 <Image src="/fotos/WhatsApp Image 2026-03-02 at 10.41.28 (1).jpeg" alt="Caricatura ao vivo" fill sizes="(max-width: 768px) 45vw, 25vw" className="object-cover" loading="lazy" />
@@ -246,7 +246,7 @@ export default function Home() {
       <footer className="bg-[#0F1C30] py-6 md:py-8">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           <span className="font-bold text-base md:text-lg text-white">
-            Junior <span className="text-[#F5A623]">Caricaturas</span>
+            Ivo <span className="text-[#F5A623]">Caricaturas</span>
           </span>
           <p className="text-white/40 text-xs md:text-sm text-center">
             © 2025 Ivo Caricaturas & Brindes. Todos os direitos reservados.
