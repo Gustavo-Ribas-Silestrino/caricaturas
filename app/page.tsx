@@ -1,55 +1,71 @@
 import Image from "next/image";
-import Carousel from "./components/Carousel";
-
-const products = [
-  {
-    id: 1,
-    name: "Caneca",
-    desc: "Caricatura digital impressa em caneca personalizada. Presente perfeito para eventos e brindes corporativos.",
-    img: "/fotos/CANECA.png",
-  },
-  {
-    id: 2,
-    name: "Papel Tradicional",
-    desc: "Caricatura desenhada à mão na hora, ideal para festas, feiras e eventos ao vivo.",
-    img: "/fotos/PAPEL.png",
-  },
-  {
-    id: 3,
-    name: "Papel Digital",
-    desc: "Arte digital colorida impressa em papel de alta qualidade. Estilo moderno e vibrante.",
-    img: "/fotos/DIGITAL.png",
-  },
-  {
-    id: 4,
-    name: "Cardeneta",
-    desc: "Caricatura estampada em cardeneta exclusiva. Lembrança que dura para sempre.",
-    img: "/fotos/CARDENETA.png",
-  },
-  {
-    id: 5,
-    name: "Squeeze",
-    desc: "Squeeze personalizado com caricatura. Brinde prático e diferenciado para qualquer ocasião.",
-    img: "/fotos/SQUEEZE 1.png",
-  },
-  {
-    id: 6,
-    name: "Desenho com IA",
-    desc: "Caricatura gerada com inteligência artificial, colorida e com acabamento profissional.",
-    img: "/fotos/caderno a5 I.A Carlos - Copia.jpg",
-    showTitle: true,
-  },
-];
-
-const navLinks = [
-  { label: "Início", href: "#inicio" },
-  { label: "Produtos", href: "#produtos" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Sobre", href: "#sobre" },
-];
+import VideoSection from "./components/VideoSection";
+import ContactForm from "./components/ContactForm";
 
 const WA_NUMBER = "5511994316205";
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Olá%20Junior!%20Quero%20saber%20mais%20sobre%20as%20caricaturas`;
+
+const navLinks = [
+  { label: "Reações", href: "#reacoes" },
+  { label: "Tradicional", href: "#tradicional" },
+  { label: "Digital", href: "#digital" },
+  { label: "IA", href: "#ia" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Contato", href: "#contato" },
+];
+
+const tradicionalFotos = [
+  { src: "/fotos/kaka.png", alt: "Caricatura do Kaká" },
+  { src: "/fotos/PAPEL.png", alt: "Caricatura em papel" },
+  { src: "/fotos/papel png 2.png", alt: "Caricatura tradicional" },
+  { src: "/fotos/WhatsApp Image 2026-01-07 at 16.15.38.jpeg", alt: "Trabalho ao vivo" },
+  { src: "/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg", alt: "Caricatura evento" },
+  { src: "/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (2).jpeg", alt: "Caricatura ao vivo" },
+];
+
+const digitalFotos = [
+  { src: "/fotos/DIGITAL.png", alt: "Caricatura digital" },
+  { src: "/fotos/digital a4.jpg", alt: "Caricatura digital A4" },
+  { src: "/fotos/WhatsApp Image 2026-05-25 at 16.24.51.jpeg", alt: "Caricatura digital colorida" },
+];
+
+const iaFotos = [
+  { src: "/fotos/ia/foto destaque ia.png", alt: "Caricatura com IA" },
+  { src: "/fotos/ia/ia1.jpeg", alt: "IA 1" },
+  { src: "/fotos/ia/ia2.jpeg", alt: "IA 2" },
+  { src: "/fotos/ia/ia3.jpeg", alt: "IA 3" },
+  { src: "/fotos/ia/ia4.jpeg", alt: "IA 4" },
+  { src: "/fotos/ia/ia5.jpeg", alt: "IA 5" },
+];
+
+function SectionHeader({ tag, title }: { tag: string; title: string }) {
+  return (
+    <div className="text-center mb-10 md:mb-14">
+      <p className="text-[#1E56A0] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2">{tag}</p>
+      <h2 className="font-black text-3xl md:text-4xl text-[#1B2A4A]">{title}</h2>
+      <div className="w-16 h-1 bg-[#F5A623] rounded-full mx-auto mt-4" />
+    </div>
+  );
+}
+
+function PhotoGrid({ fotos }: { fotos: { src: string; alt: string }[] }) {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      {fotos.map((f, i) => (
+        <div key={i} className="relative aspect-[3/4] rounded-2xl overflow-hidden group">
+          <Image
+            src={f.src}
+            alt={f.alt}
+            fill
+            sizes="(max-width: 768px) 50vw, 33vw"
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -60,13 +76,10 @@ export default function Home() {
           <span className="font-bold text-base md:text-xl text-white tracking-wide shrink-0">
             Junior <span className="text-[#F5A623]">Caricaturas</span>
           </span>
-          <ul className="hidden md:flex gap-8">
+          <ul className="hidden md:flex gap-6">
             {navLinks.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-white/80 hover:text-[#F5A623] text-sm font-medium transition-colors duration-200"
-                >
+                <a href={l.href} className="text-white/80 hover:text-[#F5A623] text-sm font-medium transition-colors duration-200">
                   {l.label}
                 </a>
               </li>
@@ -85,173 +98,109 @@ export default function Home() {
 
       <main className="flex-1">
         {/* HERO */}
-        <section
-          id="inicio"
-          className="min-h-screen flex items-center bg-[#1B2A4A] pt-14 md:pt-16 relative overflow-hidden"
-        >
-          <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-[#F5A623]/10 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#1E56A0]/20 blur-3xl pointer-events-none" />
-          <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 w-full">
-            <div className="text-center md:text-left">
-              <p className="text-[#F5A623] font-semibold text-xs md:text-sm uppercase tracking-widest mb-3">
-                Caricaturista Profissional
-              </p>
-              <h1 className="font-black text-4xl md:text-6xl text-white leading-tight mb-4 md:mb-6">
-                Arte que faz
-                <br />
-                <span className="text-[#F5A623]">todo mundo</span>
-                <br />
-                sorrir
-              </h1>
-              <p className="text-white/70 text-base md:text-lg leading-relaxed mb-6 md:mb-8 max-w-md mx-auto md:mx-0">
-                Caricaturas personalizadas para eventos, brindes corporativos e
-                presentes únicos. Papel tradicional, digital, canecas e muito mais.
-              </p>
-              <div className="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
-                <a
-                  href="#produtos"
-                  className="bg-[#F5A623] hover:bg-[#F7C262] text-[#0F1C30] font-bold px-6 md:px-8 py-3 rounded-full transition-all duration-200 hover:scale-105 text-sm md:text-base"
-                >
-                  Ver Produtos
-                </a>
-                <a
-                  href="#portfolio"
-                  className="border border-white/30 hover:border-[#F5A623] text-white hover:text-[#F5A623] font-semibold px-6 md:px-8 py-3 rounded-full transition-all duration-200 text-sm md:text-base"
-                >
-                  Ver Portfólio
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center mt-4 md:mt-0">
-              <div className="relative w-56 md:w-96">
-                <div className="absolute -inset-3 rounded-3xl border border-[#F5A623]/30" />
-                <div className="absolute -inset-6 rounded-3xl border border-[#F5A623]/10" />
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: "3/4" }}>
-                  <Image
-                    src="/fotos/kaka.png"
-                    alt="Caricatura do Kaká"
-                    fill
-                    sizes="(max-width: 768px) 224px, 384px"
-                    className="object-cover object-top"
-                    priority
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0F1C30] to-transparent" />
-                </div>
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1 md:gap-2 bg-[#F5A623] text-[#0F1C30] px-3 md:px-5 py-1.5 md:py-2 rounded-full shadow-lg whitespace-nowrap">
-                  <span className="text-base md:text-lg">⚽</span>
-                  <span className="font-black text-xs md:text-sm tracking-wide">Caricatura do Kaká</span>
-                </div>
-                <div className="absolute -top-3 -right-3 bg-[#1E56A0] text-white text-xs font-bold px-2 md:px-3 py-1 rounded-full shadow-md">
-                  Trabalho Real
-                </div>
-              </div>
-            </div>
-          </div>
+        <section id="inicio" className="min-h-screen flex flex-col items-center justify-center bg-[#1B2A4A] pt-14 md:pt-16 text-center px-4">
+          <p className="text-[#F5A623] font-semibold text-xs md:text-sm uppercase tracking-widest mb-4">
+            Caricaturista Profissional
+          </p>
+          <h1 className="font-black text-4xl md:text-6xl text-white leading-tight mb-4">
+            Arte que faz<br />
+            <span className="text-[#F5A623]">todo mundo</span><br />
+            sorrir
+          </h1>
+          <p className="text-white/70 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+            Caricaturas personalizadas para eventos, brindes corporativos e presentes únicos.
+          </p>
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-black text-lg md:text-2xl px-10 md:px-16 py-5 md:py-6 rounded-full shadow-2xl transition-all duration-200 hover:scale-105"
+          >
+            <svg viewBox="0 0 24 24" className="w-7 h-7 md:w-9 md:h-9 fill-white shrink-0">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Pedir Orçamento pelo WhatsApp
+          </a>
+          <a href="#reacoes" className="mt-12 text-white/40 hover:text-white/70 transition-colors flex flex-col items-center gap-2 text-sm">
+            Ver trabalhos
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 animate-bounce">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </a>
         </section>
 
-        {/* STATS BAR */}
-        <section className="bg-[#F5A623] py-6 md:py-8">
-          <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
-            {[
-              { num: "500+", label: "Clientes Atendidos" },
-              { num: "5+", label: "Anos de Experiência" },
-              { num: "5", label: "Tipos de Produto" },
-              { num: "100%", label: "Satisfação Garantida" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="font-black text-2xl md:text-3xl text-[#0F1C30]">{s.num}</div>
-                <div className="text-[#0F1C30]/70 text-xs md:text-sm font-medium mt-1">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* PRODUTOS */}
-        <section id="produtos" className="py-12 md:py-20 bg-[#FFF8F0]">
+        {/* REAÇÕES */}
+        <section id="reacoes" className="py-12 md:py-20 bg-[#FFF8F0]">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-10 md:mb-14">
-              <p className="text-[#1E56A0] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2">
-                O que ofereço
-              </p>
-              <h2 className="font-black text-3xl md:text-4xl text-[#1B2A4A]">
-                Produtos & Serviços
-              </h2>
-              <div className="w-16 h-1 bg-[#F5A623] rounded-full mx-auto mt-4" />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
-              {products.map((p) => (
-                <div
-                  key={p.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group"
-                >
-                  <div className="relative h-72 md:h-96 overflow-hidden">
-                    <Image
-                      src={p.img}
-                      alt={p.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {p.showTitle && (
-                      <div className="absolute top-0 left-0 right-0 flex justify-center bg-white py-2">
-                        <span style={{ fontFamily: "Montserrat, sans-serif", fontWeight: 900, fontSize: "1.75rem", letterSpacing: "0em", color: "#1B2A4A" }}>
-                          DESENHO COM IA
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="px-4 md:px-6 py-4">
-                    <p className="text-[#1B2A4A]/60 text-sm leading-relaxed">{p.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <SectionHeader tag="Veja ao vivo" title="Reações" />
+            <VideoSection />
           </div>
         </section>
 
-        {/* PORTFÓLIO COM CARROSSEL */}
-        <section id="portfolio" className="py-12 md:py-20 bg-white">
+        {/* CARICATURA TRADICIONAL */}
+        <section id="tradicional" className="py-12 md:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-10 md:mb-14">
-              <p className="text-[#1E56A0] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2">
-                Trabalhos realizados
-              </p>
-              <h2 className="font-black text-3xl md:text-4xl text-[#1B2A4A]">
-                Portfólio
-              </h2>
-              <div className="w-16 h-1 bg-[#F5A623] rounded-full mx-auto mt-4" />
+            <SectionHeader tag="Feito à mão" title="Caricatura Tradicional" />
+            <p className="text-center text-[#1B2A4A]/60 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
+              Desenhada na hora, ao vivo, em papel. Ideal para festas, feiras e eventos corporativos. O público adora!
+            </p>
+            <PhotoGrid fotos={tradicionalFotos} />
+            <div className="text-center mt-10">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+                className="inline-block bg-[#1B2A4A] hover:bg-[#1E56A0] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200">
+                Quero no meu evento
+              </a>
             </div>
-            <Carousel />
           </div>
         </section>
 
-        {/* SOBRE */}
+        {/* CARICATURA DIGITAL */}
+        <section id="digital" className="py-12 md:py-20 bg-[#FFF8F0]">
+          <div className="max-w-6xl mx-auto px-4">
+            <SectionHeader tag="Arte moderna" title="Caricatura Digital" />
+            <p className="text-center text-[#1B2A4A]/60 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
+              Arte digital colorida, impressa em papel A4 de alta qualidade. Estilo vibrante e moderno, perfeita para brindes.
+            </p>
+            <PhotoGrid fotos={digitalFotos} />
+            <div className="text-center mt-10">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+                className="inline-block bg-[#1B2A4A] hover:bg-[#1E56A0] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200">
+                Solicitar orçamento
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* INTELIGÊNCIA ARTIFICIAL */}
+        <section id="ia" className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <SectionHeader tag="Tecnologia + Arte" title="Inteligência Artificial" />
+            <p className="text-center text-[#1B2A4A]/60 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
+              Caricaturas geradas com IA, com acabamento profissional. Resultado único, colorido e entregue rapidamente.
+            </p>
+            <PhotoGrid fotos={iaFotos} />
+            <div className="text-center mt-10">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+                className="inline-block bg-[#1B2A4A] hover:bg-[#1E56A0] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200">
+                Solicitar orçamento
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* SOBRE MIM */}
         <section id="sobre" className="py-12 md:py-20 bg-[#1B2A4A]">
           <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                <Image
-                  src="/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg"
-                  alt="Junior trabalhando"
-                  fill
-                  sizes="(max-width: 768px) 45vw, 25vw"
-                  className="object-cover"
-                />
+                <Image src="/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg" alt="Junior trabalhando" fill sizes="(max-width: 768px) 45vw, 25vw" className="object-cover" loading="lazy" />
               </div>
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mt-6 md:mt-8">
-                <Image
-                  src="/fotos/WhatsApp Image 2026-03-02 at 10.41.28 (1).jpeg"
-                  alt="Caricatura ao vivo"
-                  fill
-                  sizes="(max-width: 768px) 45vw, 25vw"
-                  className="object-cover"
-                />
+                <Image src="/fotos/WhatsApp Image 2026-03-02 at 10.41.28 (1).jpeg" alt="Caricatura ao vivo" fill sizes="(max-width: 768px) 45vw, 25vw" className="object-cover" loading="lazy" />
               </div>
             </div>
             <div className="text-center md:text-left">
-              <p className="text-[#F5A623] font-semibold text-xs md:text-sm uppercase tracking-widest mb-3">
-                Sobre mim
-              </p>
+              <p className="text-[#F5A623] font-semibold text-xs md:text-sm uppercase tracking-widest mb-3">Sobre mim</p>
               <h2 className="font-black text-3xl md:text-4xl text-white mb-4 md:mb-6">
                 Quem é o <span className="text-[#F5A623]">Junior Favero</span>?
               </h2>
@@ -261,6 +210,54 @@ export default function Home() {
               <p className="text-white/70 text-sm md:text-base leading-relaxed">
                 Formado em administração de empresas, fundou a Fast Caricaturas e utiliza seus conhecimentos técnicos e habilidades artísticas para mesclar profissionalismo e arte, formando uma equipe de artistas que atende em todo o Brasil!
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTATO */}
+        <section id="contato" className="py-12 md:py-20 bg-[#FFF8F0]">
+          <div className="max-w-5xl mx-auto px-4">
+            <SectionHeader tag="Fale conosco" title="Contato" />
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* Info */}
+              <div className="flex flex-col gap-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-full bg-[#1B2A4A] flex items-center justify-center shrink-0">
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-white stroke-2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#1B2A4A]">Localização</p>
+                    <p className="text-[#1B2A4A]/60 text-sm">São Paulo, SP — Brasil<br/>Atendemos em todo o Brasil</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#1B2A4A]">WhatsApp / Telefone</p>
+                    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold text-sm hover:underline">(11) 99431-6205</a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-full bg-[#1E56A0] flex items-center justify-center shrink-0">
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-white stroke-2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#1B2A4A]">E-mail</p>
+                    <a href="mailto:contato@fastcaricaturas.com.br" className="text-[#1E56A0] text-sm hover:underline">contato@fastcaricaturas.com.br</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Formulário */}
+              <ContactForm />
             </div>
           </div>
         </section>
@@ -275,12 +272,7 @@ export default function Home() {
           <p className="text-white/40 text-xs md:text-sm text-center">
             © 2025 Junior Caricaturas & Brindes. Todos os direitos reservados.
           </p>
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#F5A623] hover:text-[#F7C262] text-sm font-medium transition-colors"
-          >
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-[#F5A623] hover:text-[#F7C262] text-sm font-medium transition-colors">
             WhatsApp
           </a>
         </div>
