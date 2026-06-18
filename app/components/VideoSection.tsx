@@ -1,11 +1,11 @@
 "use client";
 
 const videos = [
-  "/videos/WhatsApp Video 2026-06-16 at 11.05.06.mp4",
-  "/videos/WhatsApp Video 2026-06-16 at 11.05.07.mp4",
-  "/videos/WhatsApp Video 2026-06-16 at 11.05.07 (1).mp4",
-  "/videos/WhatsApp Video 2026-06-16 at 11.05.07 (2).mp4",
-  "/videos/WhatsApp Video 2026-06-16 at 11.08.23.mp4",
+  "/videos/edited/reacao1.mp4",
+  "/videos/edited/reacao2.mp4",
+  "/videos/edited/reacao3.mp4",
+  "/videos/edited/reacao4.mp4",
+  "/videos/edited/reacao5.mp4",
 ];
 
 export default function VideoSection() {
