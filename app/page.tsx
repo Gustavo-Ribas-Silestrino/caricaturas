@@ -1,5 +1,5 @@
 import Image from "next/image";
-import VideoSection from "./components/VideoSection";
+import VideoCarousel from "./components/VideoCarousel";
 import ContactForm from "./components/ContactForm";
 
 const WA_NUMBER = "5511994316205";
@@ -14,56 +14,44 @@ const navLinks = [
   { label: "Contato", href: "#contato" },
 ];
 
-const tradicionalFotos = [
-  { src: "/fotos/kaka.png", alt: "Caricatura do Kaká" },
-  { src: "/fotos/PAPEL.png", alt: "Caricatura em papel" },
-  { src: "/fotos/papel png 2.png", alt: "Caricatura tradicional" },
-  { src: "/fotos/WhatsApp Image 2026-01-07 at 16.15.38.jpeg", alt: "Trabalho ao vivo" },
-  { src: "/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (1).jpeg", alt: "Caricatura evento" },
-  { src: "/fotos/WhatsApp Image 2026-01-07 at 16.15.38 (2).jpeg", alt: "Caricatura ao vivo" },
-];
-
-const digitalFotos = [
-  { src: "/fotos/DIGITAL.png", alt: "Caricatura digital" },
-  { src: "/fotos/digital a4.jpg", alt: "Caricatura digital A4" },
-  { src: "/fotos/WhatsApp Image 2026-05-25 at 16.24.51.jpeg", alt: "Caricatura digital colorida" },
-];
-
-const iaFotos = [
-  { src: "/fotos/ia/foto destaque ia.png", alt: "Caricatura com IA" },
-  { src: "/fotos/ia/ia1.jpeg", alt: "IA 1" },
-  { src: "/fotos/ia/ia2.jpeg", alt: "IA 2" },
-  { src: "/fotos/ia/ia3.jpeg", alt: "IA 3" },
-  { src: "/fotos/ia/ia4.jpeg", alt: "IA 4" },
-  { src: "/fotos/ia/ia5.jpeg", alt: "IA 5" },
-];
 
 function SectionHeader({ tag, title }: { tag: string; title: string }) {
   return (
-    <div className="text-center mb-10 md:mb-14">
+    <div className="mb-10 md:mb-12">
       <p className="text-[#1E56A0] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2">{tag}</p>
       <h2 className="font-black text-3xl md:text-4xl text-[#1B2A4A]">{title}</h2>
-      <div className="w-16 h-1 bg-[#F5A623] rounded-full mx-auto mt-4" />
+      <div className="w-16 h-1 bg-[#F5A623] rounded-full mt-4" />
     </div>
   );
 }
 
-function PhotoGrid({ fotos }: { fotos: { src: string; alt: string }[] }) {
+function ServiceSection({
+  tag, title, desc, img, alt, cta, reverse = false, dark = false,
+}: {
+  tag: string; title: string; desc: string; img: string; alt: string; cta: string; reverse?: boolean; dark?: boolean;
+}) {
+  const waLink = `https://wa.me/5511994316205?text=Olá%20Ivo!%20Quero%20saber%20mais%20sobre%20as%20caricaturas`;
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-      {fotos.map((f, i) => (
-        <div key={i} className="relative aspect-[3/4] rounded-2xl overflow-hidden group">
-          <Image
-            src={f.src}
-            alt={f.alt}
-            fill
-            sizes="(max-width: 768px) 50vw, 33vw"
-            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
+    <section className={`py-14 md:py-24 ${dark ? "bg-[#1B2A4A]" : "bg-white"}`}>
+      <div className={`max-w-6xl mx-auto px-4 flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} gap-10 md:gap-16 items-center`}>
+        {/* Foto destaque */}
+        <div className="w-full md:w-5/12 shrink-0">
+          <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
+            <Image src={img} alt={alt} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover object-top" loading="lazy" />
+          </div>
         </div>
-      ))}
-    </div>
+        {/* Texto */}
+        <div className="flex-1 text-center md:text-left">
+          <p className={`font-semibold text-xs md:text-sm uppercase tracking-widest mb-3 ${dark ? "text-[#F5A623]" : "text-[#1E56A0]"}`}>{tag}</p>
+          <h2 className={`font-black text-3xl md:text-5xl leading-tight mb-5 ${dark ? "text-white" : "text-[#1B2A4A]"}`}>{title}</h2>
+          <p className={`text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto md:mx-0 ${dark ? "text-white/70" : "text-[#1B2A4A]/60"}`}>{desc}</p>
+          <a href={waLink} target="_blank" rel="noopener noreferrer"
+            className="inline-block bg-[#F5A623] hover:bg-[#F7C262] text-[#0F1C30] font-bold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 text-sm md:text-base shadow-lg">
+            {cta}
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -130,63 +118,54 @@ export default function Home() {
         </section>
 
         {/* REAÇÕES */}
-        <section id="reacoes" className="py-12 md:py-20 bg-[#FFF8F0]">
+        <section id="reacoes" className="py-14 md:py-24 bg-[#FFF8F0]">
           <div className="max-w-6xl mx-auto px-4">
-            <SectionHeader tag="Veja ao vivo" title="Reações" />
-            <VideoSection />
+            <div className="text-center mb-10 md:mb-14">
+              <p className="text-[#1E56A0] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2">Veja ao vivo</p>
+              <h2 className="font-black text-3xl md:text-4xl text-[#1B2A4A]">Reações</h2>
+              <div className="w-16 h-1 bg-[#F5A623] rounded-full mx-auto mt-4" />
+            </div>
+            <VideoCarousel />
           </div>
         </section>
 
         {/* CARICATURA TRADICIONAL */}
-        <section id="tradicional" className="py-12 md:py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <SectionHeader tag="Feito à mão" title="Caricatura Tradicional" />
-            <p className="text-center text-[#1B2A4A]/60 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
-              Desenhada na hora, ao vivo, em papel. Ideal para festas, feiras e eventos corporativos. O público adora!
-            </p>
-            <PhotoGrid fotos={tradicionalFotos} />
-            <div className="text-center mt-10">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-                className="inline-block bg-[#1B2A4A] hover:bg-[#1E56A0] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200">
-                Quero no meu evento
-              </a>
-            </div>
-          </div>
-        </section>
+        <div id="tradicional">
+          <ServiceSection
+            tag="Feito à mão"
+            title="Caricatura Tradicional"
+            desc="Desenhada na hora, ao vivo, em papel. Ideal para festas, feiras e eventos corporativos. O público adora e leva para casa como lembrança única!"
+            img="/fotos/kaka.png"
+            alt="Caricatura do Kaká"
+            cta="Quero no meu evento"
+          />
+        </div>
 
         {/* CARICATURA DIGITAL */}
-        <section id="digital" className="py-12 md:py-20 bg-[#FFF8F0]">
-          <div className="max-w-6xl mx-auto px-4">
-            <SectionHeader tag="Arte moderna" title="Caricatura Digital" />
-            <p className="text-center text-[#1B2A4A]/60 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
-              Arte digital colorida, impressa em papel A4 de alta qualidade. Estilo vibrante e moderno, perfeita para brindes.
-            </p>
-            <PhotoGrid fotos={digitalFotos} />
-            <div className="text-center mt-10">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-                className="inline-block bg-[#1B2A4A] hover:bg-[#1E56A0] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200">
-                Solicitar orçamento
-              </a>
-            </div>
-          </div>
-        </section>
+        <div id="digital">
+          <ServiceSection
+            tag="Arte moderna"
+            title="Caricatura Digital"
+            desc="Arte digital colorida, impressa em papel A4 de alta qualidade. Estilo vibrante e moderno, perfeita para brindes corporativos e presentes especiais."
+            img="/fotos/DIGITAL.png"
+            alt="Caricatura digital"
+            cta="Solicitar orçamento"
+            reverse
+            dark
+          />
+        </div>
 
         {/* INTELIGÊNCIA ARTIFICIAL */}
-        <section id="ia" className="py-12 md:py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <SectionHeader tag="Tecnologia + Arte" title="Inteligência Artificial" />
-            <p className="text-center text-[#1B2A4A]/60 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed">
-              Caricaturas geradas com IA, com acabamento profissional. Resultado único, colorido e entregue rapidamente.
-            </p>
-            <PhotoGrid fotos={iaFotos} />
-            <div className="text-center mt-10">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-                className="inline-block bg-[#1B2A4A] hover:bg-[#1E56A0] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200">
-                Solicitar orçamento
-              </a>
-            </div>
-          </div>
-        </section>
+        <div id="ia">
+          <ServiceSection
+            tag="Tecnologia + Arte"
+            title="Inteligência Artificial"
+            desc="Caricaturas geradas com inteligência artificial, com acabamento profissional. Resultado único, colorido e entregue rapidamente para qualquer ocasião."
+            img="/fotos/ia/foto destaque ia.png"
+            alt="Caricatura com IA"
+            cta="Solicitar orçamento"
+          />
+        </div>
 
         {/* SOBRE MIM */}
         <section id="sobre" className="py-12 md:py-20 bg-[#1B2A4A]">
