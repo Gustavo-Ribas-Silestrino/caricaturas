@@ -41,8 +41,8 @@ export default function ProductCarousel() {
         }}
       >
         {visible.map((p, i) => (
-          <div key={i} className="relative aspect-[3/4]">
-            <Image src={p.src} alt={p.alt} fill sizes="33vw" className="object-cover object-top" loading="lazy" />
+          <div key={i} className="relative aspect-[3/4] bg-[#f0ede8]">
+            <Image src={p.src} alt={p.alt} fill sizes="33vw" className="object-contain" loading="lazy" />
           </div>
         ))}
       </div>
