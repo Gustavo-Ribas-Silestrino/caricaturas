@@ -4,92 +4,25 @@
   --color-navy: #1B2A4A;
   --color-blue: #1E56A0;
   --color-gold: #F5A623;
-  --color-gold-light: #F7C262;
-  --color-cream: #FFF8F0;
-  --color-dark: #0F1C30;
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Montserrat', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
-  background: #ffffff;
+  background: #fff;
   color: #1B2A4A;
 }
 
-/* ── Scroll reveal ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.from-left {
-  transform: translateX(-50px);
-}
-.reveal.from-right {
-  transform: translateX(50px);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translate(0, 0);
+.wix-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.05;
 }
 
-/* ── Hero animated gradient background ── */
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.hero-bg {
-  background: linear-gradient(135deg, #0F1C30 0%, #1B2A4A 40%, #1E3A6E 70%, #1B2A4A 100%);
-  background-size: 300% 300%;
-  animation: gradientShift 10s ease infinite;
-}
-
-/* ── Floating animation (hero image) ── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
-}
-.float-anim {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* ── Glowing WhatsApp button ── */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5), 0 8px 32px rgba(37, 211, 102, 0.3); }
-  50%       { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0), 0 8px 32px rgba(37, 211, 102, 0.5); }
-}
-.btn-glow {
-  animation: pulse-glow 2.5s ease-in-out infinite;
-}
-
-/* ── Shimmer on gold accent bar ── */
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-.shimmer-bar {
-  background: linear-gradient(90deg, #F5A623 0%, #ffe082 40%, #F5A623 60%, #F5A623 100%);
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
-}
-
-/* ── Stagger delay helpers ── */
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-.delay-300 { transition-delay: 0.3s; }
-.delay-400 { transition-delay: 0.4s; }
-
-/* ── Photo hover glow ── */
-.photo-glow {
-  transition: box-shadow 0.4s ease, transform 0.4s ease;
-}
-.photo-glow:hover {
-  box-shadow: 0 0 40px rgba(245, 166, 35, 0.35), 0 24px 48px rgba(0,0,0,0.25);
-  transform: scale(1.02);
+.script-text {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
 }
